@@ -1,37 +1,28 @@
-import Header from './components/Header';
-import Footer from './components/Footer';
-import E8Visualization2D from './components/E8Visualization2D';
+import E8Visualization3D from './components/E8Visualization3D';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col">
-      <Header />
-      <main className="flex-grow container mx-auto p-4">
-        <section id="home" className="py-8">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold mb-4">E8 Structure Explorer</h1>
-            <p className="text-xl mb-8">An interactive visualization of the exceptional Lie group E8</p>
-            <div className="bg-white rounded-lg shadow-lg p-6 max-w-2xl mx-auto mb-8">
-              <h2 className="text-2xl font-semibold mb-4">Welcome to the E8 Explorer</h2>
-              <p className="mb-4">
-                The E8 Lie group is one of the most remarkable structures in mathematics. 
-                With 248 roots in 8-dimensional space, it represents the largest exceptional simple Lie group 
-                and has profound connections to various areas of mathematics and theoretical physics.
-              </p>
-              <p>
-                This interactive explorer allows you to visualize projections of the E8 root system 
-                and manipulate it in 8-dimensional space using the rotation controls.
-              </p>
-            </div>
-          </div>
-        </section>
-        
-        <section id="visualization" className="py-8">
-          <h2 className="text-3xl font-bold mb-6 text-center">E8 Visualization</h2>
-          <E8Visualization2D width={700} height={700} />
-        </section>
-      </main>
-      <Footer />
+    <div className="w-screen h-screen overflow-hidden bg-black">
+      {/* Animated background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-950 to-purple-950 opacity-50" />
+      
+      {/* Main visualization */}
+      <E8Visualization3D className="w-full h-full" />
+      
+      {/* Title overlay */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none opacity-0 hover:opacity-100 transition-opacity duration-500">
+        <h1 className="text-6xl font-black text-center bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent drop-shadow-2xl">
+          E8
+        </h1>
+        <p className="text-center text-gray-400 mt-2 text-sm tracking-widest uppercase">
+          The Exceptional Lie Group
+        </p>
+      </div>
+      
+      {/* Corner branding */}
+      <div className="absolute bottom-4 right-4 text-white/30 text-xs">
+        <span className="font-mono">E8 Structure Explorer</span>
+      </div>
     </div>
   );
 }
