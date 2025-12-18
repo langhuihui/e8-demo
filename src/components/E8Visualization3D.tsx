@@ -41,7 +41,7 @@ const E8Visualization3D: React.FC<E8Visualization3DProps> = ({ className = '' })
   // Create 8D rotation matrix using 8 rotation planes
   // Each dimension pairs with another to form a rotation plane
   const createRotationMatrix8D = useCallback((angles: number[]): number[][] => {
-    const matrix = Array(8).fill(0).map((_, i) => 
+    const matrix: number[][] = Array(8).fill(0).map((_, i) => 
       Array(8).fill(0).map((_, j) => i === j ? 1 : 0)
     );
     
@@ -292,8 +292,7 @@ const E8Visualization3D: React.FC<E8Visualization3DProps> = ({ className = '' })
     const glow = new THREE.Mesh(glowGeometry, glowMaterial);
     scene.add(glow);
     
-    // Store original positions for animation
-    const originalPositions = new Float32Array(positions);
+    // Original positions stored in geometry attributes for animation
     
     // Animation loop
     let time = 0;
